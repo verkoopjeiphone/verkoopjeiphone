@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>KoopjeIphone – Goedkope iPhones voor jou gevonden</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #000;
+      --bg2: #0a0a0a;
+      --bg3: #111;
+      --surface: #1c1c1e;
+      --surface2: #2c2c2e;
+      --white: #f5f5f7;
+      --muted: rgba(245,245,247,0.55);
+      --blue: #0071e3;
+      --blue-hover: #0077ed;
+      --border: rgba(255,255,255,0.08);
+      --font: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg);
+      color: var(--white);
+      font-family: var(--font);
+      font-weight: 400;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 2rem; height: 52px;
+      background: rgba(0,0,0,0.72);
+      backdrop-filter: saturate(180%) blur(20px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo { font-size: 1.05rem; font-weight: 600; letter-spacing: -0.02em; }
+    .nav-logo span { color: var(--blue); }
+    .nav-links { display: flex; list-style: none; }
+    .nav-links a { color: var(--muted); text-decoration: none; font-size: 0.8rem; padding: 0 0.9rem; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--white); }
+    .nav-cta { background: var(--blue); color: #fff; font-size: 0.8rem; font-weight: 500; padding: 0.42rem 1.1rem; border-radius: 980px; text-decoration: none; transition: background 0.2s; }
+    .nav-cta:hover { background: var(--blue-hover); }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh; display: flex; flex-direction: column;
+      align-items: center; justify-content: center; text-align: center;
+      padding: 8rem 2rem 6rem; position: relative; overflow: hidden;
+    }
+    .hero::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(0,113,227,0.18) 0%, transparent 65%);
+    }
+    .hero-eyebrow {
+      font-size: 0.75rem; font-weight: 500; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--blue); margin-bottom: 1.4rem;
+      opacity: 0; animation: fadeUp 0.7s 0.1s ease forwards;
+    }
+    .hero h1 {
+      font-size: clamp(2.8rem, 7vw, 5.5rem); font-weight: 700;
+      letter-spacing: -0.04em; line-height: 1.05; max-width: 780px;
+      margin-bottom: 1.4rem; opacity: 0; animation: fadeUp 0.7s 0.2s ease forwards;
+    }
+    .hero h1 .blue { color: var(--blue); }
+    .hero-sub {
+      font-size: clamp(1rem, 2vw, 1.2rem); font-weight: 300; color: var(--muted);
+      max-width: 500px; margin-bottom: 2.5rem; line-height: 1.7;
+      opacity: 0; animation: fadeUp 0.7s 0.3s ease forwards;
+    }
+    .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; opacity: 0; animation: fadeUp 0.7s 0.4s ease forwards; }
+    .btn-blue { background: var(--blue); color: #fff; font-size: 1rem; font-weight: 500; padding: 0.85rem 2rem; border-radius: 980px; text-decoration: none; transition: background 0.2s, transform 0.15s; }
+    .btn-blue:hover { background: var(--blue-hover); transform: scale(1.02); }
+    .btn-ghost { background: transparent; color: var(--blue); font-size: 1rem; font-weight: 500; padding: 0.85rem 2rem; border-radius: 980px; text-decoration: none; border: 1px solid rgba(0,113,227,0.35); transition: border-color 0.2s, transform 0.15s; }
+    .btn-ghost:hover { border-color: var(--blue); transform: scale(1.02); }
+
+    /* STATS BAR */
+    .stats-bar { display: flex; justify-content: center; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); background: var(--bg2); }
+    .stat-item { flex: 1; max-width: 220px; padding: 2rem 1.5rem; text-align: center; border-right: 1px solid var(--border); }
+    .stat-item:last-child { border-right: none; }
+    .stat-num { font-size: 2rem; font-weight: 700; letter-spacing: -0.04em; }
+    .stat-label { font-size: 0.8rem; color: var(--muted); margin-top: 0.2rem; }
+
+    /* SECTIONS */
+    section { padding: 8rem 2rem; }
+    .container { max-width: 980px; margin: 0 auto; }
+    .container-sm { max-width: 680px; margin: 0 auto; }
+    .eyebrow { font-size: 0.7rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--blue); margin-bottom: 0.8rem; }
+    .section-title { font-size: clamp(1.8rem, 4vw, 3rem); font-weight: 700; letter-spacing: -0.04em; line-height: 1.08; margin-bottom: 1rem; }
+    .section-body { font-size: 1rem; font-weight: 300; color: var(--muted); max-width: 520px; line-height: 1.7; }
+
+    /* HOE WERKT HET */
+    .how-section { background: var(--bg2); }
+    .how-header { text-align: center; margin-bottom: 4rem; }
+    .how-header .section-body { margin: 0 auto; }
+    .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--border); border-radius: 18px; overflow: hidden; }
+    .step { background: var(--surface); padding: 2.5rem 2rem; transition: background 0.2s; }
+    .step:hover { background: var(--surface2); }
+    .step-icon { width: 44px; height: 44px; background: rgba(0,113,227,0.15); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.3rem; margin-bottom: 1.2rem; }
+    .step h3 { font-size: 1rem; font-weight: 600; letter-spacing: -0.02em; margin-bottom: 0.5rem; }
+    .step p { font-size: 0.875rem; color: var(--muted); line-height: 1.65; }
+
+    /* OVER MIJ */
+    .about-section { background: var(--bg3); }
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
+    .about-visual { aspect-ratio: 1; max-width: 360px; border-radius: 24px; background: var(--surface); display: flex; align-items: center; justify-content: center; font-size: 6rem; border: 1px solid var(--border); position: relative; overflow: hidden; }
+    .about-visual::after { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 30% 30%, rgba(0,113,227,0.15), transparent 70%); }
+    .about-text .section-body { max-width: 100%; margin-bottom: 2rem; }
+    .trust-list { list-style: none; display: flex; flex-direction: column; gap: 0.8rem; }
+    .trust-list li { display: flex; align-items: center; gap: 0.8rem; font-size: 0.9rem; color: var(--muted); }
+    .trust-list li::before { content: '✓'; display: inline-flex; align-items: center; justify-content: center; width: 20px; height: 20px; background: rgba(0,113,227,0.15); color: var(--blue); border-radius: 50%; font-size: 0.7rem; font-weight: 700; flex-shrink: 0; }
+
+    /* FORMULIER */
+    .form-section { background: var(--bg); }
+    .form-card { background: var(--surface); border-radius: 20px; border: 1px solid var(--border); padding: 3rem; }
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.1rem; }
+    .form-group { display: flex; flex-direction: column; gap: 0.45rem; }
+    .form-group.full { grid-column: 1 / -1; }
+    label { font-size: 0.78rem; font-weight: 500; color: var(--muted); }
+    input, select, textarea { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); color: var(--white); font-family: var(--font); font-size: 0.95rem; padding: 0.8rem 1rem; border-radius: 10px; outline: none; transition: border-color 0.2s, background 0.2s; width: 100%; appearance: none; }
+    input:focus, select:focus, textarea:focus { border-color: var(--blue); background: rgba(0,113,227,0.07); }
+    input::placeholder { color: rgba(255,255,255,0.25); }
+    select option { background: #1c1c1e; }
+    textarea { resize: vertical; min-height: 90px; }
+    .euro-wrap { position: relative; }
+    .euro-wrap span { position: absolute; left: 1rem; top: 50%; transform: translateY(-50%); color: var(--muted); pointer-events: none; }
+    .euro-wrap input { padding-left: 1.8rem; }
+    .submit-btn { width: 100%; background: var(--blue); color: #fff; font-family: var(--font); font-weight: 600; font-size: 0.95rem; padding: 0.9rem; border: none; border-radius: 10px; cursor: pointer; margin-top: 0.8rem; transition: background 0.2s, transform 0.15s; }
+    .submit-btn:hover { background: var(--blue-hover); transform: scale(1.01); }
+    .form-note { text-align: center; font-size: 0.78rem; color: rgba(255,255,255,0.25); margin-top: 0.8rem; }
+    .success-msg { display: none; text-align: center; padding: 3rem 2rem; }
+    .success-msg.show { display: block; }
+    .success-msg h3 { font-size: 1.5rem; font-weight: 700; letter-spacing: -0.03em; margin-bottom: 0.5rem; }
+    .success-msg p { color: var(--muted); }
+
+    /* INRUIL */
+    .trade-section { background: var(--bg2); }
+    .trade-card { background: var(--surface); border-radius: 20px; border: 1px solid var(--border); padding: 2.5rem; }
+    .condition-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.6rem; margin-top: 0.5rem; }
+    .cond-btn { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); color: var(--muted); font-family: var(--font); font-size: 0.82rem; font-weight: 500; padding: 0.65rem 0.3rem; border-radius: 10px; cursor: pointer; text-align: center; transition: all 0.2s; }
+    .cond-btn:hover { border-color: var(--blue); color: var(--white); }
+    .cond-btn.active { background: rgba(0,113,227,0.15); border-color: var(--blue); color: var(--blue); }
+    .value-result { display: none; margin-top: 1.5rem; padding: 1.5rem 2rem; background: rgba(0,113,227,0.07); border: 1px solid rgba(0,113,227,0.2); border-radius: 14px; }
+    .value-result.show { display: block; }
+    .value-label { font-size: 0.7rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--blue); margin-bottom: 0.3rem; }
+    .value-num { font-size: 2.2rem; font-weight: 700; letter-spacing: -0.04em; }
+    .value-sub { font-size: 0.8rem; color: var(--muted); margin-top: 0.4rem; }
+
+    /* CONTACT */
+    .contact-section { background: var(--bg); }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
+    .contact-item { display: flex; align-items: center; gap: 1rem; padding: 1rem 0; border-bottom: 1px solid var(--border); }
+    .c-icon { width: 38px; height: 38px; background: var(--surface); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1rem; flex-shrink: 0; border: 1px solid var(--border); }
+    .contact-item a { color: var(--blue); text-decoration: none; font-size: 0.9rem; transition: opacity 0.2s; }
+    .contact-item a:hover { opacity: 0.75; }
+    .contact-form-card { background: var(--surface); border-radius: 20px; border: 1px solid var(--border); padding: 2.2rem; }
+
+    /* FOOTER */
+    footer { background: var(--bg2); border-top: 1px solid var(--border); padding: 2.5rem 2rem; text-align: center; }
+    .footer-logo { font-size: 1rem; font-weight: 600; letter-spacing: -0.02em; margin-bottom: 0.4rem; }
+    .footer-logo span { color: var(--blue); }
+    footer p { font-size: 0.78rem; color: rgba(255,255,255,0.25); }
+
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: translateY(0); } }
+
+    @media (max-width: 768px) {
+      nav { padding: 0 1.2rem; }
+      .nav-links { display: none; }
+      section { padding: 5rem 1.2rem; }
+      .steps { grid-template-columns: 1fr; }
+      .about-grid { grid-template-columns: 1fr; }
+      .about-visual { display: none; }
+      .form-grid { grid-template-columns: 1fr; }
+      .contact-grid { grid-template-columns: 1fr; }
+      .condition-grid { grid-template-columns: repeat(2, 1fr); }
+      .stats-bar { flex-wrap: wrap; }
+      .stat-item { border-right: none; border-bottom: 1px solid var(--border); max-width: 100%; }
+      .form-card, .trade-card, .contact-form-card { padding: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-logo">Koopje<span>iPhone</span></div>
+    <ul class="nav-links">
+      <li><a href="#hoe-werkt-het">Hoe werkt het</a></li>
+      <li><a href="#over-mij">Over mij</a></li>
+      <li><a href="#aanvraag">Aanvragen</a></li>
+      <li><a href="#inruil">Inruilwaarde</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a href="#aanvraag" class="nav-cta">Start aanvraag</a>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <p class="hero-eyebrow">Persoonlijke iPhone-zoekdienst · Nederland</p>
+    <h1>Jouw <span class="blue">iPhone</span>,<br>voor de beste prijs.</h1>
+    <p class="hero-sub">Geef aan welke iPhone je wilt en voor welk budget — ik zoek hem voor je. Betrouwbaar, persoonlijk en altijd voordelig.</p>
+    <div class="hero-actions">
+      <a href="#aanvraag" class="btn-blue">Doe een aanvraag</a>
+      <a href="#inruil" class="btn-ghost">Wat is mijn toestel waard?</a>
+    </div>
+  </section>
+
+  <!-- STATS BAR -->
+  <div class="stats-bar">
+    <div class="stat-item"><div class="stat-num">€100+</div><div class="stat-label">Gemiddelde besparing</div></div>
+    <div class="stat-item"><div class="stat-num">48u</div><div class="stat-label">Reactietijd</div></div>
+    <div class="stat-item"><div class="stat-num">100%</div><div class="stat-label">Geen verplichtingen</div></div>
+    <div class="stat-item"><div class="stat-num">NL</div><div class="stat-label">Persoonlijke service</div></div>
+  </div>
+
+  <!-- HOE WERKT HET -->
+  <section id="hoe-werkt-het" class="how-section">
+    <div class="container">
+      <div class="how-header">
+        <p class="eyebrow">Werkwijze</p>
+        <h2 class="section-title">In drie stappen aan jouw iPhone</h2>
+        <p class="section-body">Geen gedoe, geen oplichters. Ik zoek een betrouwbare deal voor jou — jij beslist of je akkoord gaat.</p>
+      </div>
+      <div class="steps">
+        <div class="step">
+          <div class="step-icon">📋</div>
+          <h3>Vul de aanvraag in</h3>
+          <p>Geef aan welk model je zoekt, wat je maximale budget is en eventuele wensen zoals opslag of kleur.</p>
+        </div>
+        <div class="step">
+          <div class="step-icon">🔍</div>
+          <h3>Ik ga op zoek</h3>
+          <p>Ik doorzoek betrouwbare aanbieders en tweedehandsmarkten om de beste deal voor jou te vinden.</p>
+        </div>
+        <div class="step">
+          <div class="step-icon">✅</div>
+          <h3>Jij beslist</h3>
+          <p>Je ontvangt een voorstel. Geen verplichtingen — jij kiest of je akkoord gaat.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- OVER MIJ -->
+  <section id="over-mij" class="about-section">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-visual">📱</div>
+        <div class="about-text">
+          <p class="eyebrow">Over mij</p>
+          <h2 class="section-title">Waarom KoopjeIphone?</h2>
+          <p class="section-body">Ik ben [jouw naam], en ik help mensen al jaren aan een goede iPhone voor een eerlijke prijs. Ik ken de markt, weet waar de beste deals te vinden zijn en onderhandel voor jou. Geen grote winkel, gewoon een persoonlijke aanpak.</p>
+          <ul class="trust-list">
+            <li>Gratis aanvraag, pas betalen als je akkoord gaat</li>
+            <li>Persoonlijk contact via WhatsApp of e-mail</li>
+            <li>Alleen betrouwbare aanbieders en verkopers</li>
+            <li>Zowel nieuw als refurbished mogelijk</li>
+            <li>Eerlijke inruilwaardebepaling voor jouw oude toestel</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- AANVRAAG FORMULIER -->
+  <section id="aanvraag" class="form-section">
+    <div class="container-sm">
+      <p class="eyebrow" style="text-align:center;">Aanvraag</p>
+      <h2 class="section-title" style="text-align:center;margin-bottom:0.5rem;">Welke iPhone zoek jij?</h2>
+      <p class="section-body" style="text-align:center;margin:0 auto 2.5rem;">Vul het formulier in en ik ga voor je op zoek.</p>
+      <div class="form-card">
+        <div id="form-container">
+          <div class="form-grid">
+            <div class="form-group">
+              <label for="naam">Naam</label>
+              <input type="text" id="naam" placeholder="Jan de Vries" />
+            </div>
+            <div class="form-group">
+              <label for="email">E-mailadres</label>
+              <input type="email" id="email" placeholder="jan@email.nl" />
+            </div>
+            <div class="form-group">
+              <label for="tel">Telefoonnummer (optioneel)</label>
+              <input type="tel" id="tel" placeholder="+31 6 12 34 56 78" />
+            </div>
+            <div class="form-group">
+              <label for="contact-voorkeur">Voorkeur contact</label>
+              <select id="contact-voorkeur">
+                <option value="">Kies...</option>
+                <option>E-mail</option>
+                <option>WhatsApp</option>
+                <option>Bellen</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="model">Gewenst model</label>
+              <select id="model">
+                <option value="">Kies een model...</option>
+                <option>iPhone 13</option>
+                <option>iPhone 13 Pro</option>
+                <option>iPhone 13 Pro Max</option>
+                <option>iPhone 14</option>
+                <option>iPhone 14 Pro</option>
+                <option>iPhone 14 Pro Max</option>
+                <option>iPhone 15</option>
+                <option>iPhone 15 Pro</option>
+                <option>iPhone 15 Pro Max</option>
+                <option>iPhone 16</option>
+                <option>iPhone 16 Pro</option>
+                <option>iPhone 16 Pro Max</option>
+                <option>Weet ik niet zeker</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="opslag">Gewenste opslag</label>
+              <select id="opslag">
+                <option value="">Maakt niet uit</option>
+                <option>128 GB</option>
+                <option>256 GB</option>
+                <option>512 GB</option>
+                <option>1 TB</option>
+              </select>
+            </div>
+            <div class="form-group full">
+              <label for="budget">Maximaal budget</label>
+              <div class="euro-wrap">
+                <span>€</span>
+                <input type="number" id="budget" placeholder="400" min="100" max="2000" />
+              </div>
+            </div>
+            <div class="form-group full">
+              <label for="wensen">Extra wensen (optioneel)</label>
+              <textarea id="wensen" placeholder="Bijv. specifieke kleur, nieuw of refurbished, garantie gewenst..."></textarea>
+            </div>
+          </div>
+          <button class="submit-btn" onclick="submitForm()">Stuur mijn aanvraag</button>
+          <p class="form-note">🔒 Je gegevens worden nooit gedeeld met derden.</p>
+        </div>
+        <div class="success-msg" id="success-msg">
+          <div style="font-size:3rem;margin-bottom:1rem;">✅</div>
+          <h3>Aanvraag ontvangen!</h3>
+          <p>Bedankt! Ik ga voor je op zoek en neem binnen 48 uur contact met je op.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INRUIL WAARDEBEPALING -->
+  <section id="inruil" class="trade-section">
+    <div class="container-sm">
+      <p class="eyebrow" style="text-align:center;">Inruilwaarde</p>
+      <h2 class="section-title" style="text-align:center;margin-bottom:0.5rem;">Wat is jouw iPhone waard?</h2>
+      <p class="section-body" style="text-align:center;margin:0 auto 2.5rem;">Ontvang een indicatie van de inruilwaarde van jouw huidige toestel.</p>
+      <div class="trade-card">
+        <div class="form-grid">
+          <div class="form-group">
+            <label for="inruil-model">Jouw huidige model</label>
+            <select id="inruil-model">
+              <option value="">Kies model...</option>
+              <option value="se2">iPhone SE (2e gen)</option>
+              <option value="11">iPhone 11</option>
+              <option value="11pro">iPhone 11 Pro</option>
+              <option value="12">iPhone 12</option>
+              <option value="12pro">iPhone 12 Pro</option>
+              <option value="13">iPhone 13</option>
+              <option value="13pro">iPhone 13 Pro</option>
+              <option value="14">iPhone 14</option>
+              <option value="14pro">iPhone 14 Pro</option>
+              <option value="15">iPhone 15</option>
+              <option value="15pro">iPhone 15 Pro</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="inruil-opslag">Opslag</label>
+            <select id="inruil-opslag">
+              <option value="64">64 GB</option>
+              <option value="128" selected>128 GB</option>
+              <option value="256">256 GB</option>
+              <option value="512">512 GB</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group" style="margin-top:1.1rem;">
+          <label>Staat van het toestel</label>
+          <div class="condition-grid">
+            <button class="cond-btn" onclick="setCondition(this, 1.0)">Nieuwstaat</button>
+            <button class="cond-btn" onclick="setCondition(this, 0.82)">Goed</button>
+            <button class="cond-btn" onclick="setCondition(this, 0.62)">Redelijk</button>
+            <button class="cond-btn" onclick="setCondition(this, 0.38)">Beschadigd</button>
+          </div>
+        </div>
+        <button class="submit-btn" onclick="calcValue()" style="margin-top:1.4rem;">Bereken indicatieve waarde</button>
+        <div class="value-result" id="value-result">
+          <div class="value-label">Geschatte inruilwaarde</div>
+          <div class="value-num" id="value-range">€ — – € —</div>
+          <p class="value-sub">Dit is een indicatie op basis van huidige marktprijzen. De exacte waarde hangt af van de werkelijke staat van het toestel.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="contact-section">
+    <div class="container">
+      <div class="contact-grid">
+        <div class="contact-info">
+          <p class="eyebrow">Contact</p>
+          <h2 class="section-title">Heb je een vraag?</h2>
+          <p class="section-body" style="margin-bottom:2rem;">Geen gedoe, geen wachttijden. Stuur me een berichtje en ik kom zo snel mogelijk bij je terug.</p>
+          <div class="contact-item"><div class="c-icon">📧</div><a href="mailto:info@koopjeiphone.nl">info@koopjeiphone.nl</a></div>
+          <div class="contact-item"><div class="c-icon">📱</div><a href="tel:+31612345678">+31 6 12 34 56 78</a></div>
+          <div class="contact-item"><div class="c-icon">💬</div><a href="https://wa.me/31612345678" target="_blank">WhatsApp mij direct</a></div>
+        </div>
+        <div class="contact-form-card">
+          <div style="display:flex;flex-direction:column;gap:1.1rem;">
+            <div class="form-group"><label>Naam</label><input type="text" placeholder="Jouw naam" /></div>
+            <div class="form-group"><label>E-mail</label><input type="email" placeholder="jouw@email.nl" /></div>
+            <div class="form-group"><label>Bericht</label><textarea placeholder="Stel hier je vraag..."></textarea></div>
+          </div>
+          <button class="submit-btn" style="margin-top:1rem;" onclick="alert('Koppel dit formulier aan Formspree of jouw eigen backend.')">Verstuur bericht</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-logo">Koopje<span>iPhone</span></div>
+    <p>© 2025 KoopjeIphone · Persoonlijke iPhone-zoekdienst · Nederland</p>
+  </footer>
+
+  <script>
+    const baseValues = {
+      se2:   { 64: 75,  128: 95,  256: 115 },
+      11:    { 64: 120, 128: 145, 256: 170 },
+      11pro: { 64: 155, 128: 185, 256: 215 },
+      12:    { 64: 185, 128: 210, 256: 245 },
+      12pro: { 128: 235, 256: 275, 512: 315 },
+      13:    { 128: 280, 256: 320, 512: 370 },
+      13pro: { 128: 330, 256: 375, 512: 425 },
+      14:    { 128: 375, 256: 425, 512: 485 },
+      14pro: { 128: 435, 256: 495, 512: 560 },
+      15:    { 128: 490, 256: 550, 512: 620 },
+      15pro: { 128: 555, 256: 625, 512: 700 },
+    };
+    let conditionMultiplier = null;
+
+    function setCondition(btn, value) {
+      document.querySelectorAll('.cond-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      conditionMultiplier = value;
+    }
+
+    function calcValue() {
+      const model  = document.getElementById('inruil-model').value;
+      const opslag = parseInt(document.getElementById('inruil-opslag').value);
+      if (!model) { alert('Kies je huidige model.'); return; }
+      if (conditionMultiplier === null) { alert('Selecteer de staat van je toestel.'); return; }
+      const table = baseValues[model];
+      if (!table) return;
+      const keys = Object.keys(table).map(Number).sort((a,b)=>a-b);
+      const closest = keys.reduce((p,c) => Math.abs(c-opslag)<Math.abs(p-opslag)?c:p);
+      const base = table[closest];
+      const low  = Math.round(base * conditionMultiplier * 0.88 / 5) * 5;
+      const high = Math.round(base * conditionMultiplier / 5) * 5;
+      document.getElementById('value-range').textContent = `€ ${low} – € ${high}`;
+      const el = document.getElementById('value-result');
+      el.classList.add('show');
+      el.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+
+    function submitForm() {
+      const naam   = document.getElementById('naam').value.trim();
+      const email  = document.getElementById('email').value.trim();
+      const model  = document.getElementById('model').value;
+      const budget = document.getElementById('budget').value;
+      if (!naam || !email || !model || !budget) {
+        alert('Vul minimaal naam, e-mail, model en budget in.');
+        return;
+      }
+      // TODO: koppel hier Formspree of jouw eigen backend aan
+      document.getElementById('form-container').style.display = 'none';
+      document.getElementById('success-msg').classList.add('show');
+    }
+  </script>
+</body>
+</html>
