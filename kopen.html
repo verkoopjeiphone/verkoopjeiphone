@@ -41,6 +41,8 @@
       color: var(--blue);
       text-decoration: none;
     }
+    .nav-back:hover { text-decoration: underline; }
+
     main {
       flex: 1;
       display: flex;
@@ -173,7 +175,7 @@
 
 <nav>
   <div class="nav-logo">Koopje<span>iPhone</span></div>
-  <a href="/" class="nav-back">← Terug naar begin</a>
+  <a href="/koopjeiphone/" class="nav-back">← Terug naar begin</a>
 </nav>
 
 <main>
@@ -264,7 +266,6 @@
 </main>
 
 <script>
-  // Indicatieve nieuwprijzen per model (aanpassen naar wens)
   const REF_PRICES_NEW = {
     "iphone-13":     699,
     "iphone-13-pro": 899,
@@ -309,7 +310,6 @@
       return;
     }
 
-    // Hier kun je later een echte submit (fetch / Formspree) toevoegen.
     document.getElementById('koop-form-wrapper').style.display = 'none';
     document.getElementById('success-msg').classList.add('show');
   }
