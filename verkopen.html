@@ -4,8 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>KoopjeIphone – Ik wil mijn iPhone verkopen</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  //fonts.googleapis.com" />
+  //fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
@@ -150,14 +150,6 @@
       color: var(--muted);
     }
 
-    .success {
-      display: none;
-      text-align: center;
-      padding: 2rem 0.5rem 1.2rem;
-      font-size: 0.95rem;
-    }
-    .success.show { display: block; }
-
     @media (max-width: 720px) {
       nav { padding: 0 1.1rem; }
       .shell { padding: 2rem 1.5rem 1.9rem; border-radius: 18px; }
@@ -181,78 +173,82 @@
       Je krijgt van mij een eerlijke richtprijs en daarna stemmen we samen verder af.
     </p>
 
-    <div id="verkoop-form-wrapper">
-      <div class="form-grid">
-        <div class="form-group">
-          <label>Naam</label>
-          <input type="text" id="naam" placeholder="Jouw naam" />
-        </div>
-        <div class="form-group">
-          <label>E-mailadres</label>
-          <input type="email" id="email" placeholder="jij@email.nl" />
-        </div>
-        <div class="form-group">
-          <label>Telefoon (optioneel)</label>
-          <input type="tel" id="tel" placeholder="+31 6 ..." />
-        </div>
-        <div class="form-group">
-          <label>Model</label>
-          <select id="model">
-            <option value="">Kies model...</option>
-            <option value="13">iPhone 13</option>
-            <option value="13pro">iPhone 13 Pro</option>
-            <option value="14">iPhone 14</option>
-            <option value="14pro">iPhone 14 Pro</option>
-            <option value="14promax">iPhone 14 Pro Max</option>
-            <option value="15">iPhone 15</option>
-            <option value="15pro">iPhone 15 Pro</option>
-            <option value="16">iPhone 16</option>
-          </select>
-        </div>
-
-        <div class="form-group">
-          <label>Opslag</label>
-          <select id="opslag">
-            <option>128 GB</option>
-            <option>256 GB</option>
-            <option>512 GB</option>
-          </select>
-        </div>
-
-        <div class="form-group">
-          <label>Algemene staat</label>
-          <select id="staat">
-            <option value="netjes">Alles netjes</option>
-            <option value="sporen">Lichte gebruikssporen</option>
-            <option value="schade">Schade / barst</option>
-          </select>
-        </div>
-
-        <div class="form-group">
-          <label>Batterijconditie (%)</label>
-          <input type="number" id="battery" placeholder="bijv. 84" min="60" max="100" />
-          <p class="hint">Instellingen › Batterij › Batterijconditie.</p>
-        </div>
-
-        <div class="form-group full">
-          <label>Opmerkingen (optioneel)</label>
-          <textarea id="opmerkingen" placeholder="Bijv. factuur aanwezig, accessoires, foto’s stuur ik via WhatsApp, enz."></textarea>
-        </div>
-
-        <div class="form-group full">
-          <label>Indicatie inkoopprijs</label>
-          <p class="range" id="range-text">Vul model, staat en batterijconditie in voor een richtprijs.</p>
-        </div>
+    <!-- Formspree formulier -->
+    <form
+      id="verkoop-form"
+      class="form-grid"
+      action="https://formspree.io/f/VERKOOPFORMID"
+      method="POST"
+    >
+      <div class="form-group">
+        abel>Naam</label>
+        <input type="text" name="naam" placeholder="Jouw naam" required />
+      </div>
+      <div class="form-group">
+        abel>E-mailadres</label>
+        <input type="email" name="email" placeholder="jij@email.nl" required />
+      </div>
+      <div class="form-group">
+        abel>Telefoon (optioneel)</label>
+        <input type="tel" name="telefoon" placeholder="+31 6 ..." />
+      </div>
+      <div class="form-group">
+        abel>Model</label>
+        <select name="model" id="model" required>
+          <option value="">Kies model...</option>
+          <option>iPhone 13</option>
+          <option>iPhone 13 Pro</option>
+          <option>iPhone 14</option>
+          <option>iPhone 14 Pro</option>
+          <option>iPhone 14 Pro Max</option>
+          <option>iPhone 15</option>
+          <option>iPhone 15 Pro</option>
+          <option>iPhone 16</option>
+        </select>
       </div>
 
-      <button class="submit-btn" type="button" onclick="submitForm()">Verstuur mijn aanvraag</button>
-      <p class="note">De definitieve prijs spreek ik altijd met je af na foto’s en een korte controle.</p>
-    </div>
+      <div class="form-group">
+        abel>Opslag</label>
+        <select name="opslag">
+          <option>128 GB</option>
+          <option>256 GB</option>
+          <option>512 GB</option>
+        </select>
+      </div>
 
-    <div class="success" id="success-msg">
-      <div style="font-size:2.3rem;margin-bottom:0.6rem;">✅</div>
-      <p>Bedankt voor je verkoop-aanvraag. Ik reageer meestal binnen 24–48 uur met een richtprijs.</p>
-    </div>
+      <div class="form-group">
+        abel>Algemene staat</label>
+        <select name="staat" id="staat">
+          <option value="netjes">Alles netjes</option>
+          <option value="sporen">Lichte gebruikssporen</option>
+          <option value="schade">Schade / barst</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        abel>Batterijconditie (%)</label>
+        <input type="number" name="battery" id="battery" placeholder="bijv. 84" min="60" max="100" />
+        <p class="hint">Instellingen › Batterij › Batterijconditie.</p>
+      </div>
+
+      <div class="form-group full">
+        abel>Opmerkingen (optioneel)</label>
+        <textarea name="opmerkingen" placeholder="Bijv. factuur aanwezig, accessoires, foto’s stuur ik via WhatsApp, enz."></textarea>
+      </div>
+
+      <div class="form-group full">
+        abel>Indicatie inkoopprijs</label>
+        <p class="range" id="range-text">Vul model, staat en batterijconditie in voor een richtprijs.</p>
+      </div>
+
+      <input type="hidden" name="_subject" value="Nieuwe verkoop-aanvraag via KoopjeIphone" />
+      <input type="hidden" name="_language" value="nl" />
+
+      <div class="form-group full">
+        <button class="submit-btn" type="submit">Verstuur mijn aanvraag</button>
+        <p class="note">De definitieve prijs spreek ik altijd met je af na foto’s en een korte controle.</p>
+      </div>
+    </form>
   </div>
 </main>
 
@@ -271,14 +267,14 @@
     let base = 0;
     const isHighBattery = battery >= 80;
 
-    if (model === '13')     base = isHighBattery ? 150 : 120;
-    if (model === '13pro')  base = isHighBattery ? 200 : 170;
-    if (model === '14')     base = isHighBattery ? 200 : 180;
-    if (model === '14pro')  base = isHighBattery ? 250 : 220;
-    if (model === '14promax') base = isHighBattery ? 275 : 240;
-    if (model === '15')     base = isHighBattery ? 300 : 260;
-    if (model === '15pro')  base = isHighBattery ? 350 : 310;
-    if (model === '16')     base = isHighBattery ? 425 : 380;
+    if (model === 'iPhone 13')     base = isHighBattery ? 150 : 120;
+    if (model === 'iPhone 13 Pro') base = isHighBattery ? 200 : 170;
+    if (model === 'iPhone 14')     base = isHighBattery ? 200 : 180;
+    if (model === 'iPhone 14 Pro') base = isHighBattery ? 250 : 220;
+    if (model === 'iPhone 14 Pro Max') base = isHighBattery ? 275 : 240;
+    if (model === 'iPhone 15')     base = isHighBattery ? 300 : 260;
+    if (model === 'iPhone 15 Pro') base = isHighBattery ? 350 : 310;
+    if (model === 'iPhone 16')     base = isHighBattery ? 425 : 380;
 
     if (staat === 'sporen') base = Math.round(base * 0.95);
     if (staat === 'schade') base = Math.round(base * 0.8);
@@ -295,20 +291,6 @@
     el.addEventListener('change', calcIndicatie);
     el.addEventListener('input', calcIndicatie);
   });
-
-  function submitForm() {
-    const naam  = document.getElementById('naam').value.trim();
-    const email = document.getElementById('email').value.trim();
-    const model = document.getElementById('model').value;
-
-    if (!naam || !email || !model) {
-      alert('Vul minimaal naam, e-mail en model in.');
-      return;
-    }
-
-    document.getElementById('verkoop-form-wrapper').style.display = 'none';
-    document.getElementById('success-msg').classList.add('show');
-  }
 </script>
 
 </body>
