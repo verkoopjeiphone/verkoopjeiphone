@@ -61,15 +61,34 @@
       border-radius: 24px;
       border: 1px solid var(--border);
       box-shadow: 0 22px 60px rgba(15,23,42,0.08);
-      padding: 2.6rem 2.4rem 2.4rem;
+      padding: 2.4rem 2.4rem 2.3rem;
       text-align: center;
     }
+
+    .hero-logo-wrap {
+      width: 72px;
+      height: 72px;
+      border-radius: 999px;
+      margin: 0 auto 1.1rem;
+      background: #f3f5ff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid rgba(15,23,42,0.06);
+    }
+    .hero-logo-wrap img {
+      width: 48px;
+      height: 48px;
+      object-fit: contain;
+      display: block;
+    }
+
     .eyebrow {
       font-size: 0.7rem;
       letter-spacing: 0.16em;
       text-transform: uppercase;
       color: var(--blue);
-      margin-bottom: 0.7rem;
+      margin-bottom: 0.5rem;
       font-weight: 600;
     }
     h1 {
@@ -159,6 +178,11 @@
 
 <main>
   <section class="hero">
+
+    <div class="hero-logo-wrap">
+      <img src="logo-verkoopjeiphone.png" alt="VerkoopjeiPhone logo">
+    </div>
+
     <p class="eyebrow">Welkom</p>
     <h1>Welke stap wil je zetten met je iPhone?</h1>
     <p class="hero-sub">
@@ -166,7 +190,6 @@
     </p>
 
     <div class="hero-actions">
-      <!-- Let op: pad met /koopjeiphone/ zodat het klopt op GitHub Pages -->
       <a href="/koopjeiphone/kopen.html" class="btn btn-primary">
         Ik wil een iPhone kopen
       </a>
