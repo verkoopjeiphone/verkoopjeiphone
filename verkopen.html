@@ -4,8 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>iPhone verkopen – VerkoopjeiPhone</title>
-  //fonts.googleapis.com" />
-  //fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
@@ -18,7 +18,6 @@
       --blue: #2563eb;
       --blue-soft: #dbeafe;
       --green: #16a34a;
-      --pink: #ec4899;
       --font: 'Inter', -apple-system, system-ui, sans-serif;
     }
     html { scroll-behavior: smooth; }
@@ -54,9 +53,7 @@
       font-weight: 600;
       letter-spacing: -0.03em;
     }
-    .nav-logo span {
-      color: #38bdf8;
-    }
+    .nav-logo span { color: #38bdf8; }
 
     .nav-tagline {
       font-size: 0.75rem;
@@ -127,12 +124,10 @@
       display: grid;
       grid-template-columns: minmax(0, 1.6fr) minmax(0, 1.1fr);
       gap: 2.4rem;
-      align-items: center;
+      align-items: flex-start;
     }
 
-    .hero-main {
-      text-align: left;
-    }
+    .hero-main { text-align: left; }
 
     .hero-logo-wrap {
       width: 78px;
@@ -164,65 +159,98 @@
       font-weight: 600;
     }
     h1 {
-      font-size: clamp(2.2rem, 3.5vw, 2.8rem);
+      font-size: clamp(2.1rem, 3.4vw, 2.7rem);
       letter-spacing: -0.055em;
       font-weight: 700;
       margin-bottom: 0.5rem;
       color: #020617;
     }
     .hero-sub {
-      font-size: 0.98rem;
+      font-size: 0.96rem;
       color: var(--muted);
       max-width: 520px;
-      margin-bottom: 1.8rem;
+      margin-bottom: 1.6rem;
       line-height: 1.7;
     }
 
-    .hero-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.85rem;
-      margin-bottom: 1.2rem;
-    }
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.4rem;
-      padding: 0.95rem 1.9rem;
-      border-radius: 999px;
-      font-size: 0.95rem;
-      font-weight: 600;
-      text-decoration: none;
-      cursor: pointer;
-      transition: background 0.18s, color 0.18s, box-shadow 0.18s, transform 0.08s, border-color 0.18s;
-      border: 1px solid transparent;
-      min-width: 200px;
-      letter-spacing: 0.01em;
-    }
-    .btn-primary {
-      background: linear-gradient(135deg, #2563eb, #4f46e5);
-      color: #f9fafb;
-      box-shadow: 0 20px 46px rgba(37,99,235,0.55);
-    }
-    .btn-primary:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 26px 60px rgba(37,99,235,0.7);
-    }
-    .btn-secondary {
-      background: rgba(255,255,255,0.9);
-      color: #0f172a;
-      border-color: rgba(148,163,184,0.8);
-      box-shadow: 0 12px 30px rgba(148,163,184,0.45);
-    }
-    .btn-secondary:hover {
-      background: var(--blue-soft);
-      transform: translateY(-1px);
+    .form-shell {
+      background: rgba(255,255,255,0.96);
+      border-radius: 20px;
+      border: 1px solid rgba(148,163,184,0.35);
+      padding: 1.6rem 1.7rem 1.4rem;
+      box-shadow:
+        0 18px 48px rgba(15,23,42,0.18),
+        0 0 0 1px rgba(255,255,255,0.8) inset;
     }
 
-    .hero-meta {
-      font-size: 0.82rem;
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.85rem;
+      margin-top: 0.5rem;
+    }
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+      font-size: 0.85rem;
+    }
+    .form-group.full { grid-column: 1 / -1; }
+
+    label {
+      color: var(--muted);
+      font-weight: 500;
+      font-size: 0.8rem;
+    }
+    input, select, textarea {
+      border-radius: 10px;
+      border: 1px solid rgba(15,23,42,0.12);
+      padding: 0.55rem 0.9rem;
+      font-size: 0.9rem;
+      background: #f9fafb;
+      color: var(--text);
+      outline: none;
+      transition: border-color 0.15s, background 0.15s;
+    }
+    input:focus, select:focus, textarea:focus {
+      border-color: var(--blue);
+      background: #eef4ff;
+    }
+    textarea { resize: vertical; min-height: 70px; }
+
+    .euro-wrap { position: relative; }
+    .euro-wrap span {
+      position: absolute;
+      left: 0.8rem;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--muted);
+      font-size: 0.8rem;
+    }
+    .euro-wrap input { padding-left: 1.6rem; }
+
+    .submit-btn {
+      margin-top: 0.9rem;
+      width: 100%;
+      border-radius: 10px;
+      border: none;
+      padding: 0.8rem 1rem;
+      background: linear-gradient(135deg, #2563eb, #4f46e5);
+      color: #f9fafb;
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 16px 38px rgba(37,99,235,0.55);
+    }
+    .submit-btn:hover {
+      background: #1d4ed8;
+    }
+
+    .note {
+      margin-top: 0.55rem;
+      font-size: 0.78rem;
       color: rgba(15,23,42,0.7);
+      text-align: center;
     }
 
     .hero-side {
@@ -292,15 +320,9 @@
         grid-template-columns: minmax(0, 1fr);
         gap: 1.8rem;
       }
-      .hero-main {
-        text-align: left;
-      }
-      .hero-actions {
-        flex-direction: column;
-      }
-      .btn {
-        min-width: 100%;
-      }
+      .hero-main { text-align: left; }
+      .form-grid { grid-template-columns: 1fr; }
+      .submit-btn { margin-top: 0.7rem; }
     }
   </style>
 </head>
@@ -324,38 +346,41 @@
         <div class="hero-logo-wrap">
           <img src="logo-verkoopjeiphone.png" alt="Logo VerkoopjeiPhone" />
         </div>
-        <div class="eyebrow">Verkoop uw iPhone</div>
-        <h1>Veilig en transparant uw iPhone verkopen</h1>
+        <div class="eyebrow">Aanvraag · Verkopen</div>
+        <h1>Ik wil mijn iPhone verkopen</h1>
         <p class="hero-sub">
-          Meld uw iPhone aan, ontvang een indicatie van de waarde en stem vervolgens samen het vervolg af.
-          U weet vooraf waar u aan toe bent en houdt altijd de regie over de verkoop.
+          Vul hieronder rustig in welke iPhone u wilt verkopen. Op basis van de gegevens ontvangt u een indicatie van de waarde
+          en een helder voorstel voor het vervolg.
         </p>
 
-        <div class="hero-actions">
-          <a class="btn btn-primary" href="https://wa.me/31630576584" target="_blank" rel="noopener">
-            iPhone aanmelden via WhatsApp
-          </a>
-          <a class="btn btn-secondary" href="index.html">
-            Terug naar startpagina
-          </a>
+        <div class="form-shell">
+          <!-- OUD FORMULIER, ONGEWIJZIGD QUA VELDEN -->
+          <form
+            id="verkoop-form"
+            class="form-grid"
+            action="https://formspree.io/f/xxxxxxxx"  <!-- laat hier je eigen Formspree‑URL staan -->
+            method="POST"
+          >
+            <!-- PLAATS HIER 1‑OP‑1 JE BESTAANDE FORMULIERVELDEN -->
+            <!-- omdat je die niet helemaal had meegekopieerd, laat je hier gewoon exact staan wat er nu in je oude verkopen.html stond -->
+          </form>
         </div>
 
-        <p class="hero-meta">
-          Regio Randstad en omgeving · Persoonlijke begeleiding bij verkoop
+        <p class="note">
+          U ontvangt altijd een persoonlijke reactie met toelichting op het voorstel.
         </p>
       </div>
 
       <aside class="hero-side">
         <div class="pill">Stap-voor-stap begeleiding</div>
         <h2>Zo werkt het verkopen van uw iPhone</h2>
-        <u
         <ul>
-          >U stuurt de gegevens en foto’s van uw iPhone door.</l/li>
-          >U ontvangt een indicatie van de waarde en een voorstel.</l/li>
-          >Bij akkoord wordt het vervolg helder met u afgestemd.</li>
+          <li>U vult de gegevens van uw iPhone zo volledig mogelijk in.</li>
+          <li>U ontvangt een indicatie van de waarde en een voorstel.</li>
+          <li>Bij akkoord wordt het vervolg helder met u afgestemd.</li>
         </ul>
         <p class="hero-side-note">
-          Heeft u vragen over de staat of waarde van uw toestel, dan wordt dit rustig samen met u doorgenomen.
+          Heeft u vragen over de staat of waarde van uw toestel, dan wordt dit rustig met u doorgenomen.
         </p>
       </aside>
     </div>
