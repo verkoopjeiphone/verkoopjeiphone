@@ -361,38 +361,43 @@
           Op basis daarvan ontvangt u een indicatieve inkoopprijs en een helder voorstel voor het vervolg.
         </p>
 
-        <div class="form-shell" id="verkoop-form-wrapper">
-          <div class="form-grid">
+        <div class="form-shell">
+          <form
+            id="verkoop-form"
+            class="form-grid"
+            action="https://formspree.io/f/xnjopzgw"
+            method="POST"
+          >
             <div class="form-group">
               <label>Naam</label>
-              <input type="text" id="naam" placeholder="Uw naam" />
+              <input type="text" name="naam" id="naam" placeholder="Uw naam" required />
             </div>
             <div class="form-group">
               <label>E-mailadres</label>
-              <input type="email" id="email" placeholder="u@email.nl" />
+              <input type="email" name="email" id="email" placeholder="u@email.nl" required />
             </div>
             <div class="form-group">
               <label>Telefoon (optioneel)</label>
-              <input type="tel" id="tel" placeholder="+31 6 ..." />
+              <input type="tel" name="telefoon" id="tel" placeholder="+31 6 ..." />
             </div>
             <div class="form-group">
               <label>Model</label>
-              <select id="model">
+              <select name="model" id="model" required>
                 <option value="">Kies model...</option>
-                <option value="13">iPhone 13</option>
-                <option value="13pro">iPhone 13 Pro</option>
-                <option value="14">iPhone 14</option>
-                <option value="14pro">iPhone 14 Pro</option>
-                <option value="14promax">iPhone 14 Pro Max</option>
-                <option value="15">iPhone 15</option>
-                <option value="15pro">iPhone 15 Pro</option>
-                <option value="16">iPhone 16</option>
+                <option value="iPhone 13">iPhone 13</option>
+                <option value="iPhone 13 Pro">iPhone 13 Pro</option>
+                <option value="iPhone 14">iPhone 14</option>
+                <option value="iPhone 14 Pro">iPhone 14 Pro</option>
+                <option value="iPhone 14 Pro Max">iPhone 14 Pro Max</option>
+                <option value="iPhone 15">iPhone 15</option>
+                <option value="iPhone 15 Pro">iPhone 15 Pro</option>
+                <option value="iPhone 16">iPhone 16</option>
               </select>
             </div>
 
             <div class="form-group">
               <label>Opslag</label>
-              <select id="opslag">
+              <select name="opslag" id="opslag">
                 <option>128 GB</option>
                 <option>256 GB</option>
                 <option>512 GB</option>
@@ -401,7 +406,7 @@
 
             <div class="form-group">
               <label>Algemene staat</label>
-              <select id="staat">
+              <select name="staat" id="staat" required>
                 <option value="netjes">Alles netjes</option>
                 <option value="sporen">Lichte gebruikssporen</option>
                 <option value="schade">Schade / barst</option>
@@ -410,25 +415,30 @@
 
             <div class="form-group">
               <label>Batterijconditie (%)</label>
-              <input type="number" id="battery" placeholder="bijv. 84" min="60" max="100" />
+              <input type="number" name="batterijconditie" id="battery" placeholder="bijv. 84" min="60" max="100" required />
               <p class="hint">Instellingen › Batterij › Batterijconditie.</p>
             </div>
 
             <div class="form-group full">
               <label>Opmerkingen (optioneel)</label>
-              <textarea id="opmerkingen" placeholder="Bijv. factuur aanwezig, accessoires, foto’s verstuur ik later, enz."></textarea>
+              <textarea name="opmerkingen" id="opmerkingen" placeholder="Bijv. factuur aanwezig, accessoires, foto’s verstuur ik later, enz."></textarea>
             </div>
 
             <div class="form-group full">
               <label>Indicatie inkoopprijs</label>
               <p class="range" id="range-text">Vul model, staat en batterijconditie in voor een richtprijs.</p>
             </div>
-          </div>
 
-          <button class="submit-btn" type="button" onclick="submitForm()">Verstuur mijn aanvraag</button>
-          <p class="note">
-            De definitieve prijs wordt altijd met u afgestemd na foto’s en een korte controle van het toestel.
-          </p>
+            <input type="hidden" name="_subject" value="Nieuwe verkoop-aanvraag via VerkoopjeiPhone" />
+            <input type="hidden" name="_language" value="nl" />
+
+            <div class="form-group full">
+              <button class="submit-btn" type="submit">Verstuur mijn aanvraag</button>
+              <p class="note">
+                De definitieve prijs wordt altijd met u afgestemd na foto’s en een korte controle van het toestel.
+              </p>
+            </div>
+          </form>
         </div>
 
         <div class="success" id="success-msg">
@@ -459,12 +469,12 @@
 
 <script>
   function calcIndicatie() {
-    const model = document.getElementById('model').value;
+    const modelShort = document.getElementById('model').value;
     const staat = document.getElementById('staat').value;
     const battery = parseInt(document.getElementById('battery').value, 10);
     const rangeEl = document.getElementById('range-text');
 
-    if (!model || !staat || !battery || battery < 60 || battery > 100) {
+    if (!modelShort || !staat || !battery || battery < 60 || battery > 100) {
       rangeEl.textContent = 'Vul model, staat en een geldige batterijconditie (60–100%) in voor een richtprijs.';
       return;
     }
@@ -472,14 +482,28 @@
     let base = 0;
     const isHighBattery = battery >= 80;
 
-    if (model === '13')        base = isHighBattery ? 150 : 120;
-    if (model === '13pro')    base = isHighBattery ? 200 : 170;
-    if (model === '14')       base = isHighBattery ? 200 : 180;
-    if (model === '14pro')    base = isHighBattery ? 250 : 220;
-    if (model === '14promax') base = isHighBattery ? 275 : 240;
-    if (model === '15')       base = isHighBattery ? 300 : 260;
-    if (model === '15pro')    base = isHighBattery ? 350 : 310;
-    if (model === '16')       base = isHighBattery ? 425 : 380;
+    // Korte mapping voor prijsberekening
+    const map = {
+      "iPhone 13": "13",
+      "iPhone 13 Pro": "13pro",
+      "iPhone 14": "14",
+      "iPhone 14 Pro": "14pro",
+      "iPhone 14 Pro Max": "14promax",
+      "iPhone 15": "15",
+      "iPhone 15 Pro": "15pro",
+      "iPhone 16": "16"
+    };
+
+    const key = map[modelShort];
+
+    if (key === "13")        base = isHighBattery ? 150 : 120;
+    if (key === "13pro")    base = isHighBattery ? 200 : 170;
+    if (key === "14")       base = isHighBattery ? 200 : 180;
+    if (key === "14pro")    base = isHighBattery ? 250 : 220;
+    if (key === "14promax") base = isHighBattery ? 275 : 240;
+    if (key === "15")       base = isHighBattery ? 300 : 260;
+    if (key === "15pro")    base = isHighBattery ? 350 : 310;
+    if (key === "16")       base = isHighBattery ? 425 : 380;
 
     if (staat === 'sporen') base = Math.round(base * 0.95);
     if (staat === 'schade') base = Math.round(base * 0.8);
@@ -498,19 +522,10 @@
     el.addEventListener('input', calcIndicatie);
   });
 
-  function submitForm() {
-    const naam  = document.getElementById('naam').value.trim();
-    const email = document.getElementById('email').value.trim();
-    const model = document.getElementById('model').value;
-
-    if (!naam || !email || !model) {
-      alert('Vul minimaal naam, e-mailadres en model in.');
-      return;
-    }
-
-    document.getElementById('verkoop-form-wrapper').style.display = 'none';
-    document.getElementById('success-msg').classList.add('show');
-  }
+  // Optioneel: succesmelding tonen na submit zonder pagina‑verversing
+  document.getElementById('verkoop-form').addEventListener('submit', function () {
+    // Formspree handelt de submit af; eventueel kun je hier nog iets met JS doen.
+  });
 
   document.getElementById('year').textContent = new Date().getFullYear();
 </script>
