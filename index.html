@@ -68,13 +68,13 @@
 
     /* HERO */
     .hero {
-      min-height: 100vh;
+      min-height: 70vh;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       text-align: center;
-      padding: 8rem 2rem 6rem;
+      padding: 6rem 2rem 4rem;
       position: relative;
       overflow: hidden;
     }
@@ -166,31 +166,7 @@
       line-height: 1.7;
     }
 
-    /* HOE WERKT HET */
-    .how-section { background: var(--bg2); }
-    .how-header { text-align: center; margin-bottom: 3.5rem; }
-    .how-header .section-body { margin: 0 auto; }
-    .steps {
-      display: grid; grid-template-columns: repeat(3, 1fr);
-      gap: 1px; background: var(--border);
-      border-radius: 18px; overflow: hidden;
-    }
-    .step {
-      background: var(--surface); padding: 2.5rem 2rem;
-      transition: background 0.2s;
-    }
-    .step:hover { background: var(--surface2); }
-    .step-icon {
-      width: 44px; height: 44px;
-      background: rgba(0,113,227,0.12);
-      border-radius: 12px; display: flex;
-      align-items: center; justify-content: center;
-      font-size: 1.3rem; margin-bottom: 1.2rem;
-    }
-    .step h3 { font-size: 1rem; font-weight: 600; letter-spacing: -0.02em; margin-bottom: 0.5rem; }
-    .step p { font-size: 0.875rem; color: var(--muted); line-height: 1.65; }
-
-    /* KORT BLOK: ZOEK + INRUIL */
+    /* INLINE TOOLS */
     .inline-tools {
       background: var(--bg); border-top: 1px solid var(--border);
       border-bottom: 1px solid var(--border);
@@ -219,8 +195,31 @@
     }
     .mini-form-grid .full { grid-column: 1 / -1; }
 
-    /* OVER MIJ, FORM, TRADE, CONTACT, FOOTER – zelfde als eerder,
-       iets ingekort voor overzichtelijkheid */
+    /* HOE WERKT HET */
+    .how-section { background: var(--bg2); }
+    .how-header { text-align: center; margin-bottom: 3.5rem; }
+    .how-header .section-body { margin: 0 auto; }
+    .steps {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 1px; background: var(--border);
+      border-radius: 18px; overflow: hidden;
+    }
+    .step {
+      background: var(--surface); padding: 2.5rem 2rem;
+      transition: background 0.2s;
+    }
+    .step:hover { background: var(--surface2); }
+    .step-icon {
+      width: 44px; height: 44px;
+      background: rgba(0,113,227,0.12);
+      border-radius: 12px; display: flex;
+      align-items: center; justify-content: center;
+      font-size: 1.3rem; margin-bottom: 1.2rem;
+    }
+    .step h3 { font-size: 1rem; font-weight: 600; letter-spacing: -0.02em; margin-bottom: 0.5rem; }
+    .step p { font-size: 0.875rem; color: var(--muted); line-height: 1.65; }
+
+    /* OVER MIJ */
     .about-section { background: var(--bg3); }
     .about-grid {
       display: grid; grid-template-columns: 1fr 1fr;
@@ -253,6 +252,7 @@
       flex-shrink: 0;
     }
 
+    /* FORMULIER */
     .form-section { background: var(--bg); }
     .form-card {
       background: var(--surface); border-radius: 20px;
@@ -299,6 +299,7 @@
     .success-msg { display: none; text-align: center; padding: 3rem 2rem; }
     .success-msg.show { display: block; }
 
+    /* INRUIL */
     .trade-section { background: var(--bg2); }
     .trade-card {
       background: var(--surface); border-radius: 20px;
@@ -335,6 +336,7 @@
     .value-num { font-size: 2.2rem; font-weight: 700; letter-spacing: -0.04em; }
     .value-sub { font-size: 0.8rem; color: var(--muted); margin-top: 0.4rem; }
 
+    /* CONTACT */
     .contact-section { background: var(--bg); }
     .contact-grid {
       display: grid; grid-template-columns: 1fr 1fr;
@@ -362,6 +364,7 @@
       border: 1px solid var(--border); padding: 2.2rem;
     }
 
+    /* FOOTER */
     footer {
       background: var(--bg2); border-top: 1px solid var(--border);
       padding: 2.5rem 2rem; text-align: center;
@@ -425,8 +428,15 @@
     <div class="stat-item"><div class="stat-num">NL</div><div class="stat-label">Persoonlijke service</div></div>
   </div>
 
-  <!-- KORT BLOK: ZOEKDIENST + MINI-INRUIL -->
+  <!-- INLINE TOOLS: ZOEK + SNELLE INRUIL -->
   <section id="inline-tools" class="inline-tools">
+    <div class="container-sm" style="padding:2.5rem 1.2rem 1.5rem;">
+      <p class="eyebrow">Direct aan de slag</p>
+      <h2 class="section-title" style="margin-bottom:0.4rem;">Zoekservice & snelle inruil</h2>
+      <p class="section-body">
+        Links laat je kort achter welke iPhone je zoekt, rechts zie je direct wat ik ongeveer voor jouw huidige toestel kan bieden.
+      </p>
+    </div>
     <div class="inline-grid">
       <!-- Zoekdienst compact -->
       <div class="tool-card">
@@ -460,16 +470,431 @@
             <input type="email" id="quick-email" placeholder="jij@email.nl" />
           </div>
           <div class="form-group full">
-            <button class="submit-btn" onclick="alert('Gebruik dit veld later om naar je eigen backend te sturen.')">
+            <button class="submit-btn" onclick="alert('Koppel dit later aan je eigen backend of Formspree.')">
               Verstuur korte aanvraag
             </button>
           </div>
         </div>
       </div>
 
-      <!-- Mini inruil-indicator -->
+      <!-- Snelle inruil-indicatie -->
       <div class="tool-card">
         <h3 class="tool-title">Snelle inruil-indicatie</h3>
-        <p class="tool-sub">Kies je model en batterijconditie. Je ziet direct wat ik ongeveer kan bieden.</p>
+        <p class="tool-sub">Kies model en batterijconditie. Je ziet direct wat ik ongeveer kan bieden.</p>
         <div class="form-group">
-          
+          <label for="inline-model">Model (vanaf iPhone 13)</label>
+          <select id="inline-model">
+            <option value="">Kies...</option>
+            <option value="13">iPhone 13</option>
+            <option value="13pro">iPhone 13 Pro</option>
+            <option value="14">iPhone 14</option>
+            <option value="14pro">iPhone 14 Pro</option>
+            <option value="14promax">iPhone 14 Pro Max</option>
+            <option value="15">iPhone 15</option>
+            <option value="15pro">iPhone 15 Pro</option>
+            <option value="16">iPhone 16</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="inline-storage">Opslag</label>
+          <select id="inline-storage">
+            <option value="128">128 GB</option>
+            <option value="256">256 GB</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="inline-battery">Batterijconditie</label>
+          <select id="inline-battery">
+            <option value="90">Boven 85%</option>
+            <option value="82">80–85%</option>
+            <option value="78">77–79%</option>
+            <option value="70">Onder 77%</option>
+          </select>
+        </div>
+        <button class="submit-btn" onclick="calcQuickTrade()">
+          Toon geschatte inruil
+        </button>
+        <p class="tool-sub" id="inline-trade-result" style="margin-top:0.8rem;"></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOE WERKT HET -->
+  <section id="hoe-werkt-het" class="how-section">
+    <div class="container">
+      <div class="how-header">
+        <p class="eyebrow">Werkwijze</p>
+        <h2 class="section-title">Zo werkt KoopjeIphone</h2>
+        <p class="section-body">Eerst een eerlijke indicatie van je huidige toestel, daarna zoek ik de beste opvolger binnen jouw budget.</p>
+      </div>
+      <div class="steps">
+        <div class="step">
+          <div class="step-icon">📋</div>
+          <h3>Vertel wat je wilt</h3>
+          <p>Geef aan welke iPhone je zoekt en wat je maximaal wilt uitgeven. Inruilen kan ook.</p>
+        </div>
+        <div class="step">
+          <div class="step-icon">🔍</div>
+          <h3>Ik vergelijk voor jou</h3>
+          <p>Ik check betrouwbare aanbieders en particuliere deals en filter de onzin eruit.</p>
+        </div>
+        <div class="step">
+          <div class="step-icon">✅</div>
+          <h3>Jij kiest</h3>
+          <p>Je krijgt een voorstel met prijs en staat van het toestel. Geen verplichtingen.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- OVER MIJ -->
+  <section id="over-mij" class="about-section">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-visual">📱</div>
+        <div class="about-text">
+          <p class="eyebrow">Over mij</p>
+          <h2 class="section-title">Waarom KoopjeIphone?</h2>
+          <p class="section-body">Ik ben [jouw naam] en ik help mensen aan een goede iPhone voor een eerlijke prijs. Geen vage handel, maar duidelijke afspraken en transparante inruilwaarden.</p>
+          <ul class="trust-list">
+            <li>Heldere vaste inkoopprijzen, gebaseerd op model en batterij</li>
+            <li>Persoonlijk contact via WhatsApp of e-mail</li>
+            <li>Alleen nette toestellen – geen verborgen schade</li>
+            <li>Ook hulp bij het kiezen van je volgende iPhone</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VOLLEDIG AANVRAAGFORMULIER -->
+  <section id="aanvraag" class="form-section">
+    <div class="container-sm">
+      <p class="eyebrow" style="text-align:center;">Aanvraag</p>
+      <h2 class="section-title" style="text-align:center;margin-bottom:0.5rem;">Welke iPhone zoek jij?</h2>
+      <p class="section-body" style="text-align:center;margin:0 auto 2.5rem;">Wil je dat ik uitgebreid meekijk? Vul dan dit formulier in.</p>
+      <div class="form-card">
+        <div id="form-container">
+          <div class="form-grid">
+            <div class="form-group">
+              <label for="naam">Naam</label>
+              <input type="text" id="naam" placeholder="Jan de Vries" />
+            </div>
+            <div class="form-group">
+              <label for="email">E-mailadres</label>
+              <input type="email" id="email" placeholder="jan@email.nl" />
+            </div>
+            <div class="form-group">
+              <label for="tel">Telefoonnummer (optioneel)</label>
+              <input type="tel" id="tel" placeholder="+31 6 12 34 56 78" />
+            </div>
+            <div class="form-group">
+              <label for="contact-voorkeur">Voorkeur contact</label>
+              <select id="contact-voorkeur">
+                <option value="">Kies...</option>
+                <option>E-mail</option>
+                <option>WhatsApp</option>
+                <option>Bellen</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="model">Gewenst model</label>
+              <select id="model">
+                <option value="">Kies een model...</option>
+                <option>iPhone 13</option>
+                <option>iPhone 13 Pro</option>
+                <option>iPhone 13 Pro Max</option>
+                <option>iPhone 14</option>
+                <option>iPhone 14 Pro</option>
+                <option>iPhone 14 Pro Max</option>
+                <option>iPhone 15</option>
+                <option>iPhone 15 Pro</option>
+                <option>iPhone 15 Pro Max</option>
+                <option>iPhone 16</option>
+                <option>iPhone 16 Pro</option>
+                <option>iPhone 16 Pro Max</option>
+                <option>Weet ik niet zeker</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="opslag">Gewenste opslag</label>
+              <select id="opslag">
+                <option value="">Maakt niet uit</option>
+                <option>128 GB</option>
+                <option>256 GB</option>
+                <option>512 GB</option>
+                <option>1 TB</option>
+              </select>
+            </div>
+            <div class="form-group full">
+              <label for="budget">Maximaal budget</label>
+              <div class="euro-wrap">
+                <span>€</span>
+                <input type="number" id="budget" placeholder="400" min="100" max="2000" />
+              </div>
+            </div>
+            <div class="form-group full">
+              <label for="wensen">Extra wensen (optioneel)</label>
+              <textarea id="wensen" placeholder="Bijv. specifieke kleur, nieuw of refurbished, garantie gewenst..."></textarea>
+            </div>
+          </div>
+          <button class="submit-btn" onclick="submitForm()">Stuur mijn aanvraag</button>
+          <p class="form-note">🔒 Je gegevens worden nooit gedeeld met derden.</p>
+        </div>
+        <div class="success-msg" id="success-msg">
+          <div style="font-size:3rem;margin-bottom:1rem;">✅</div>
+          <h3>Aanvraag ontvangen!</h3>
+          <p>Bedankt! Ik ga voor je op zoek en neem binnen 48 uur contact met je op.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- UITGEBREIDE INRUILWAARDE -->
+  <section id="inruil" class="trade-section">
+    <div class="container-sm">
+      <p class="eyebrow" style="text-align:center;">Inruilwaarde</p>
+      <h2 class="section-title" style="text-align:center;margin-bottom:0.5rem;">Wat betaal ik voor jouw iPhone?</h2>
+      <p class="section-body" style="text-align:center;margin:0 auto 2.5rem;">Deze tool rekent met mijn werkelijke inkoopbedragen. Je ziet meteen een eerlijke indicatie.</p>
+      <div class="trade-card">
+        <div class="form-grid">
+          <div class="form-group">
+            <label for="inruil-model">Model</label>
+            <select id="inruil-model">
+              <option value="">Kies model...</option>
+              <option value="13">iPhone 13</option>
+              <option value="13pro">iPhone 13 Pro</option>
+              <option value="14">iPhone 14</option>
+              <option value="14pro">iPhone 14 Pro</option>
+              <option value="14promax">iPhone 14 Pro Max</option>
+              <option value="15">iPhone 15</option>
+              <option value="15pro">iPhone 15 Pro</option>
+              <option value="16">iPhone 16</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="inruil-opslag">Opslag</label>
+            <select id="inruil-opslag">
+              <option value="128">128 GB</option>
+              <option value="256">256 GB</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group" style="margin-top:1.1rem;">
+          <label>Algemene staat</label>
+          <div class="condition-grid">
+            <button class="cond-btn" onclick="setCondition(this, 'netjes')">Alles netjes</button>
+            <button class="cond-btn" onclick="setCondition(this, 'gebruikssporen')">Lichte gebruikssporen</button>
+            <button class="cond-btn" onclick="setCondition(this, 'schade')">Schade / barst</button>
+          </div>
+        </div>
+
+        <div class="form-group full" style="margin-top:1.5rem;">
+          <label>Batterijconditie (Maximum capaciteit in %)</label>
+          <input type="number" id="battery-health" placeholder="Bijv. 84" min="60" max="100" />
+          <p style="font-size:0.8rem;color:var(--muted);margin-top:0.3rem;">
+            Je vindt dit bij Instellingen &gt; Batterij &gt; Batterijconditie.
+          </p>
+        </div>
+
+        <button class="submit-btn" onclick="calcDetailedTrade()" style="margin-top:1.4rem;">Bereken geschatte inruilwaarde</button>
+
+        <div class="value-result" id="value-result">
+          <div class="value-label">Geschatte inruilwaarde</div>
+          <div class="value-num" id="value-range">€ —</div>
+          <p class="value-sub" id="value-text">
+            Vul je model, opslag, staat en batterijconditie in om een indicatie te zien.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="contact-section">
+    <div class="container">
+      <div class="contact-grid">
+        <div class="contact-info">
+          <p class="eyebrow">Contact</p>
+          <h2 class="section-title">Heb je een vraag?</h2>
+          <p class="section-body" style="margin-bottom:2rem;">Wil je jouw exacte toestel laten beoordelen? Stuur me foto's via WhatsApp of mail.</p>
+          <div class="contact-item"><div class="c-icon">📧</div><a href="mailto:info@koopjeiphone.nl">info@koopjeiphone.nl</a></div>
+          <div class="contact-item"><div class="c-icon">📱</div><a href="tel:+31612345678">+31 6 12 34 56 78</a></div>
+          <div class="contact-item"><div class="c-icon">💬</div><a href="https://wa.me/31612345678" target="_blank">WhatsApp mij direct</a></div>
+          <div class="contact-item"><div class="c-icon">📸</div><a href="https://www.instagram.com/verkoopjeiphone" target="_blank">Volg ons op Instagram</a></div>
+        </div>
+        <div class="contact-form-card">
+          <div style="display:flex;flex-direction:column;gap:1.1rem;">
+            <div class="form-group"><label>Naam</label><input type="text" placeholder="Jouw naam" /></div>
+            <div class="form-group"><label>E-mail</label><input type="email" placeholder="jouw@email.nl" /></div>
+            <div class="form-group"><label>Bericht</label><textarea placeholder="Stel hier je vraag..."></textarea></div>
+          </div>
+          <button class="submit-btn" style="margin-top:1rem;" onclick="alert('Koppel dit formulier later aan Formspree of je eigen backend.')">Verstuur bericht</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-logo">Koopje<span>iPhone</span></div>
+    <p>© 2025 KoopjeIphone · Persoonlijke iPhone-zoekdienst · Nederland</p>
+    <p><a href="https://www.instagram.com/verkoopjeiphone" target="_blank">Instagram: @verkoopjeiphone</a></p>
+  </footer>
+
+  <script>
+    let conditionFlag = null;
+
+    function setCondition(btn, flag) {
+      document.querySelectorAll('.cond-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      conditionFlag = flag;
+    }
+
+    function calcQuickTrade() {
+      const model = document.getElementById('inline-model').value;
+      const storage = document.getElementById('inline-storage').value;
+      const battery = parseInt(document.getElementById('inline-battery').value, 10);
+      const p = document.getElementById('inline-trade-result');
+
+      if (!model) {
+        p.textContent = 'Kies eerst een model.';
+        return;
+      }
+
+      const value = calculateBasePrice(model, storage, battery, 'netjes');
+      if (!value) {
+        p.textContent = 'Voor dit model heb ik nog geen vaste prijs ingesteld.';
+        return;
+      }
+      p.textContent = `Indicatie: ongeveer € ${value} bij een net toestel.`;
+    }
+
+    function calcDetailedTrade() {
+      const model   = document.getElementById('inruil-model').value;
+      const storage = document.getElementById('inruil-opslag').value;
+      const battery = parseInt(document.getElementById('battery-health').value, 10);
+      const rangeEl = document.getElementById('value-range');
+      const textEl  = document.getElementById('value-text');
+      const box     = document.getElementById('value-result');
+
+      if (!model) { alert('Kies een model.'); return; }
+      if (!battery || battery < 60 || battery > 100) {
+        alert('Vul een geldige batterijconditie in (60–100%).');
+        return;
+      }
+      if (!conditionFlag) {
+        alert('Kies de algemene staat van je toestel.');
+        return;
+      }
+
+      let base = calculateBasePrice(model, storage, battery, conditionFlag);
+      if (!base) {
+        alert('Voor dit model heb ik nog geen vaste prijs ingesteld.');
+        return;
+      }
+
+      let low = base;
+      let high = base;
+
+      if (conditionFlag === 'gebruikssporen') {
+        low = Math.round(base * 0.9);
+      } else if (conditionFlag === 'schade') {
+        low = Math.round(base * 0.7);
+        high = Math.round(base * 0.85);
+      }
+
+      if (conditionFlag !== 'schade') {
+        low  = base - 10;
+        high = base + 10;
+      }
+
+      rangeEl.textContent = `€ ${low} – € ${high}`;
+      textEl.textContent  = 'Definitieve prijs spreek ik met je af na foto’s en een korte check. Dit is een eerlijke richtlijn.';
+      box.classList.add('show');
+      box.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+
+    function calculateBasePrice(model, storage, battery, cond) {
+      let price = 0;
+      const is256 = String(storage) === '256';
+
+      if (model === '13') {
+        if (battery >= 80) {
+          price = 150;
+        } else if (battery >= 77) {
+          price = 125;
+        } else {
+          price = 100;
+        }
+        if (is256) price += 25;
+      }
+
+      if (model === '13pro') {
+        price = (battery < 80) ? 170 : 200;
+        if (is256) price += 25;
+      }
+
+      if (model === '14') {
+        price = (battery > 85) ? 200 : 180;
+        if (is256) price += 25;
+      }
+
+      if (model === '14pro') {
+        price = (battery < 80) ? 220 : 250;
+        if (is256) price += 25;
+      }
+
+      if (model === '14promax') {
+        price = (battery < 80) ? 240 : 275;
+        if (is256) price += 25;
+      }
+
+      if (model === '15') {
+        if (battery >= 85) {
+          price = 300;
+        } else if (battery >= 80) {
+          price = 275;
+        } else {
+          price = 250;
+        }
+        if (is256) price += 25;
+      }
+
+      if (model === '15pro') {
+        price = (battery < 80) ? 310 : 350;
+        if (is256) price += 25;
+      }
+
+      if (model === '16') {
+        price = (battery < 80) ? 380 : 425;
+        if (is256) price += 25;
+      }
+
+      if (cond === 'gebruikssporen') {
+        price = Math.round(price * 0.95);
+      } else if (cond === 'schade') {
+        price = Math.round(price * 0.8);
+      }
+
+      return price || null;
+    }
+
+    function submitForm() {
+      const naam   = document.getElementById('naam').value.trim();
+      const email  = document.getElementById('email').value.trim();
+      const model  = document.getElementById('model').value;
+      const budget = document.getElementById('budget').value;
+
+      if (!naam || !email || !model || !budget) {
+        alert('Vul minimaal naam, e-mail, model en budget in.');
+        return;
+      }
+
+      document.getElementById('form-container').style.display = 'none';
+      document.getElementById('success-msg').classList.add('show');
+    }
+  </script>
+</body>
+</html>
