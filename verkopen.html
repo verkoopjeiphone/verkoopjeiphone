@@ -4,8 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>KoopjeIphone – Ik wil mijn iPhone verkopen</title>
-  //fonts.googleapis.com" />
-  //fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
@@ -173,27 +173,27 @@
       Je krijgt van mij een eerlijke richtprijs en daarna stemmen we samen verder af.
     </p>
 
-    <!-- Formspree formulier -->
+    <!-- Formspree formulier (zelfde endpoint als kopen) -->
     <form
       id="verkoop-form"
       class="form-grid"
-      action="https://formspree.io/f/VERKOOPFORMID"
+      action="https://formspree.io/f/xnjopzgw"
       method="POST"
     >
       <div class="form-group">
-        abel>Naam</label>
+        <label>Naam</label>
         <input type="text" name="naam" placeholder="Jouw naam" required />
       </div>
       <div class="form-group">
-        abel>E-mailadres</label>
+        <label>E-mailadres</label>
         <input type="email" name="email" placeholder="jij@email.nl" required />
       </div>
       <div class="form-group">
-        abel>Telefoon (optioneel)</label>
+        <label>Telefoon (optioneel)</label>
         <input type="tel" name="telefoon" placeholder="+31 6 ..." />
       </div>
       <div class="form-group">
-        abel>Model</label>
+        <label>Model</label>
         <select name="model" id="model" required>
           <option value="">Kies model...</option>
           <option>iPhone 13</option>
@@ -208,7 +208,7 @@
       </div>
 
       <div class="form-group">
-        abel>Opslag</label>
+        <label>Opslag</label>
         <select name="opslag">
           <option>128 GB</option>
           <option>256 GB</option>
@@ -217,7 +217,7 @@
       </div>
 
       <div class="form-group">
-        abel>Algemene staat</label>
+        <label>Algemene staat</label>
         <select name="staat" id="staat">
           <option value="netjes">Alles netjes</option>
           <option value="sporen">Lichte gebruikssporen</option>
@@ -226,18 +226,18 @@
       </div>
 
       <div class="form-group">
-        abel>Batterijconditie (%)</label>
+        <label>Batterijconditie (%)</label>
         <input type="number" name="battery" id="battery" placeholder="bijv. 84" min="60" max="100" />
         <p class="hint">Instellingen › Batterij › Batterijconditie.</p>
       </div>
 
       <div class="form-group full">
-        abel>Opmerkingen (optioneel)</label>
+        <label>Opmerkingen (optioneel)</label>
         <textarea name="opmerkingen" placeholder="Bijv. factuur aanwezig, accessoires, foto’s stuur ik via WhatsApp, enz."></textarea>
       </div>
 
       <div class="form-group full">
-        abel>Indicatie inkoopprijs</label>
+        <label>Indicatie inkoopprijs</label>
         <p class="range" id="range-text">Vul model, staat en batterijconditie in voor een richtprijs.</p>
       </div>
 
