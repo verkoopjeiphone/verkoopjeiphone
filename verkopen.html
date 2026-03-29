@@ -179,9 +179,10 @@
         0 18px 48px rgba(15,23,42,0.18),
         0 0 0 1px rgba(255,255,255,0.8) inset;
     }
+
     .form-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: repeat(2, minmax(0, 1fr)); /* twee gelijke kolommen */
       gap: 0.85rem;
       margin-top: 0.5rem;
     }
@@ -199,6 +200,7 @@
       font-size: 0.8rem;
     }
     input, select, textarea {
+      width: 100%;
       border-radius: 12px;
       border: 1px solid rgba(15,23,42,0.12);
       padding: 0.8rem 0.95rem;
